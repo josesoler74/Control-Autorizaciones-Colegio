@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: school-access-postgres
+    environment:
+      POSTGRES_DB: school_access
+      POSTGRES_USER: school
+      POSTGRES_PASSWORD: change-me
+    ports:
+      - "5432:5432"
+    volumes:
+      - school_access_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U school -d school_access"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  school_access_data:

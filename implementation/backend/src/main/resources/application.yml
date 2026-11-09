@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/school_access}
+    username: ${DB_USERNAME:school}
+    password: ${DB_PASSWORD:change-me}
+  flyway:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+server:
+  port: 8080
+app:
+  public-base-url: ${APP_PUBLIC_BASE_URL:http://localhost:4200}
+whatsapp:
+  mode: ${WHATSAPP_MODE:mock}
